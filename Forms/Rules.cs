@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Garbage
 {
-    public partial class Form1 : Form
+    public partial class Rules : Form
     {
-        public Form1()
+        public Rules()
         {
             InitializeComponent();
         }
