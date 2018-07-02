@@ -17,19 +17,9 @@ namespace Garbage.Classes
         public Dice(int id)
         {
             Id = id;
-            Value = (int)Outcome.One;
+            Value = 1;
             Saved = false;
-            image = Image.FromFile("Images/" + (Id + 1) + ".png");
+            image = Image.FromFile("Images/" + (Id + 1) + "u.png");
         }
-    }
-
-    public enum Outcome : int
-    {
-        One = 1,
-        Two,
-        Three,
-        Four,
-        Five,
-        Six
     }
 }

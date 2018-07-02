@@ -43,11 +43,11 @@
             this.lblAdds = new System.Windows.Forms.Label();
             this.lblChancesTaken = new System.Windows.Forms.Label();
             this.grpPlayerCard = new System.Windows.Forms.GroupBox();
+            this.lblHotDice = new System.Windows.Forms.Label();
             this.btnRoll = new System.Windows.Forms.Button();
             this.btnClaim = new System.Windows.Forms.Button();
             this.btnChance = new System.Windows.Forms.Button();
             this.btnEndTurn = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.mnuMain.SuspendLayout();
             this.grpPlayerCard.SuspendLayout();
             this.SuspendLayout();
@@ -174,6 +174,7 @@
             // 
             // grpPlayerCard
             // 
+            this.grpPlayerCard.Controls.Add(this.lblHotDice);
             this.grpPlayerCard.Controls.Add(this.lblChancesTaken);
             this.grpPlayerCard.Controls.Add(this.lblAdds);
             this.grpPlayerCard.Controls.Add(this.lblProjectedScore);
@@ -186,6 +187,18 @@
             this.grpPlayerCard.TabIndex = 8;
             this.grpPlayerCard.TabStop = false;
             this.grpPlayerCard.Text = "Player Card";
+            // 
+            // lblHotDice
+            // 
+            this.lblHotDice.AutoSize = true;
+            this.lblHotDice.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHotDice.ForeColor = System.Drawing.Color.Red;
+            this.lblHotDice.Location = new System.Drawing.Point(181, 16);
+            this.lblHotDice.Name = "lblHotDice";
+            this.lblHotDice.Size = new System.Drawing.Size(125, 37);
+            this.lblHotDice.TabIndex = 28;
+            this.lblHotDice.Text = "Hot Dice!";
+            this.lblHotDice.Visible = false;
             // 
             // btnRoll
             // 
@@ -230,23 +243,12 @@
             this.btnEndTurn.UseVisualStyleBackColor = true;
             this.btnEndTurn.Click += new System.EventHandler(this.btnEndTurn_Click);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Enabled = false;
-            this.btnAdd.Location = new System.Drawing.Point(180, 439);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(144, 23);
-            this.btnAdd.TabIndex = 28;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
             // Garbage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 636);
             this.ControlBox = false;
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnChance);
             this.Controls.Add(this.btnEndTurn);
             this.Controls.Add(this.btnClaim);
@@ -259,6 +261,7 @@
             this.Name = "Garbage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Garbage";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Garbage_KeyDown);
             this.mnuMain.ResumeLayout(false);
             this.mnuMain.PerformLayout();
             this.grpPlayerCard.ResumeLayout(false);
@@ -289,7 +292,7 @@
         private System.Windows.Forms.Button btnClaim;
         private System.Windows.Forms.Button btnChance;
         private System.Windows.Forms.Button btnEndTurn;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblHotDice;
     }
 }
 
