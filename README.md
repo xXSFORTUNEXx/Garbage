@@ -1,36 +1,36 @@
 # Garbage
 Farkle mixed with yahtzee where you may get something you think is good, but its actual garbage.
 
-Rules:
+Rules:<br>
 On the first turn you roll all 6 dice.
 You must get a One, Five or any Combination listed.
 If you roll all 6 into One, Five or some of the many Combinations you have Hot Dice and can start over rolling all 6.
-You will then add the total from before Hot Dice to the new roll. You can roll until you want to stop unless you
+You will then add the total from before Hot Dice to the new roll. You can roll until you want to stop unless you<br>
 do not roll a One, Five or a Combination. You can then choose to take a Chance or take a 0. If you take a Chance and fail you will be
 deducted 500 points. If you succeeded then you continue until you choose to stop or fail and take another Chance or take a 0.
 If you fail another Chance you are deducted 500 points multiplied by the amount of successful Chances.
 
-Combinations:
-Five - 50 Points
-1 Pair Any Number - 50 Points
-One - 100 Points
-3 x Twos - 200 Points
-Straight One-Two-Three - 250 Points
-3 x Threes - 300 Points
-3 x Fours - 400 Points
-3 x Fives - 500 Points
-2 Pairs of Any 2 Numbers - 500 Points
-Straight One-Two-Three-Four - 500 Points
-3 x Sixes - 600 Points
-3 x Ones - 1000 Points
-4 Set Any Number - 1000 Points
-Full House Set Of 3 and 2 Pair - 1000 Points
-Straight One-Two-Three-Four-Five - 1000 Points
-5 Set Any Number - 2000 Points
-3 Set and 3 Set Any Number - 2000 Points
-3 Pairs of 2 Any Number - 2000 Points
-Straight One-Two-Three-Four-Five-Six - 3000 Points
-6 Set Any Number - 3000 Points
+Combinations:<br>
+Five - 50 Points<br>
+1 Pair Any Number - 50 Points<br>
+One - 100 Points<br>
+3 x Twos - 200 Points<br>
+Straight One-Two-Three - 250 Points<br>
+3 x Threes - 300 Points<br>
+3 x Fours - 400 Points<br>
+3 x Fives - 500 Points<br>
+2 Pairs of Any 2 Numbers - 500 Points<br>
+Straight One-Two-Three-Four - 500 Points<br>
+3 x Sixes - 600 Points<br>
+3 x Ones - 1000 Points<br>
+4 Set Any Number - 1000 Points<br>
+Full House Set Of 3 and 2 Pair - 1000 Points<br>
+Straight One-Two-Three-Four-Five - 1000 Points<br>
+5 Set Any Number - 2000 Points<br>
+3 Set and 3 Set Any Number - 2000 Points<br>
+3 Pairs of 2 Any Number - 2000 Points<br>
+Straight One-Two-Three-Four-Five-Six - 3000 Points<br>
+6 Set Any Number - 3000 Points<br>
 4 Set Any Number And 2 Pair Any Number - 3000 Points
 
 Special Rules:
