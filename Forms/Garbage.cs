@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Garbage.Classes;
@@ -72,49 +66,33 @@ namespace Garbage
                 grpCombinations.Controls.Add(chkCombos[i]);
             }
 
-            chkCombos[0].Text = "Five - 50 Points";
-            chkCombos[1].Text = "1 Pair Any Number - 50 Points";
-            chkCombos[2].Text = "One - 100 Points";
-            chkCombos[3].Text = "3 x Twos - 200 Points";
-            chkCombos[4].Text = "Straight One-Two-Three - 250 Points";
-            chkCombos[5].Text = "3 x Threes - 300 Points";
-            chkCombos[6].Text = "3 x Fours - 400 Points";
-            chkCombos[7].Text = "3 x Fives - 500 Points";
-            chkCombos[8].Text = "2 Pairs of Any 2 Numbers - 500 Points";
-            chkCombos[9].Text = "Straight One-Two-Three-Four - 500 Points";
-            chkCombos[10].Text = "3 x Sixes - 600 Points";
-            chkCombos[11].Text = "3 x Ones - 1000 Points";
-            chkCombos[12].Text = "4 Set Any Number - 1000 Points";
-            chkCombos[13].Text = "Full House Set Of 3 and 2 Pair - 1000 Points";
-            chkCombos[14].Text = "Straight One-Two-Three-Four-Five - 1000 Points";
-            chkCombos[15].Text = "5 Set Any Number - 2000 Points";
-            chkCombos[16].Text = "3 Set and 3 Set Any Number - 2000 Points";
-            chkCombos[17].Text = "3 Pairs of 2 Any Number - 2000 Points";
-            chkCombos[18].Text = "Straight One-Two-Three-Four-Five-Six - 3000 Points";
-            chkCombos[19].Text = "6 Set Any Number - 3000 Points";
-            chkCombos[20].Text = "4 Set Any Number And 2 Pair Any Number - 3000 Points";
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ExitGame();
+            chkCombos[0].Text = "3 x Twos - 200 Points";
+            chkCombos[1].Text = "Straight One-Two-Three - 250 Points";
+            chkCombos[2].Text = "3 x Threes - 300 Points";
+            chkCombos[3].Text = "3 x Fours - 400 Points";
+            chkCombos[4].Text = "3 x Fives - 500 Points";
+            chkCombos[5].Text = "2 Pairs of Any 2 Numbers - 500 Points";
+            chkCombos[6].Text = "Straight One-Two-Three-Four - 500 Points";
+            chkCombos[7].Text = "3 x Sixes - 600 Points";
+            chkCombos[8].Text = "3 x Ones - 1000 Points";
+            chkCombos[9].Text = "4 Set Any Number - 1000 Points";
+            chkCombos[10].Text = "Full House Set Of 3 and 2 Pair - 1000 Points";
+            chkCombos[11].Text = "Straight One-Two-Three-Four-Five - 1000 Points";
+            chkCombos[12].Text = "5 Set Any Number - 2000 Points";
+            chkCombos[13].Text = "3 Set and 3 Set Any Number - 2000 Points";
+            chkCombos[14].Text = "3 Pairs of 2 Any Number - 2000 Points";
+            chkCombos[15].Text = "Straight One-Two-Three-Four-Five-Six - 3000 Points";
+            chkCombos[16].Text = "6 Set Any Number - 3000 Points";
+            chkCombos[17].Text = "4 Set Any Number And 2 Pair Any Number - 3000 Points";
+            chkCombos[18].Text = "1 Pair Any Number - 50 Points";
+            chkCombos[19].Text = "One - 100 Points";
+            chkCombos[20].Text = "Five - 50 Points";
         }
 
         private void ExitGame()
         {
             DialogResult answer = MessageBox.Show("Are you sure you wish to exit?", "Exit", MessageBoxButtons.YesNo);
             if (answer == DialogResult.Yes) { Application.Exit(); }
-        }
-
-        private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Rules rules = new Rules();
-            rules.ShowDialog();
-        }
-
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NewGame();
         }
 
         private void NewGame()
@@ -126,167 +104,11 @@ namespace Garbage
             btnRoll.Enabled = true;
         }
 
-        private void btnRoll_Click(object sender, EventArgs e)
-        {
-            var random = new Random();
-
-            /*for (int i = 0; i < Total_Dice; i++)
-            {
-                if (!Game_Dice[i].Claimed)
-                {
-                    Game_Dice[i].Value = random.Next(1, 6);
-                    //dice[i].Value = 1;
-                    Game_Dice[i].Dice_Image = Image.FromFile("Images/" + Game_Dice[i].Value + "u.png");
-                    picGameDice[i].Image = Game_Dice[i].Dice_Image;
-                }
-            }
-
-            //For testing
-            /*for (int n = 2; n < Total_Dice; n++)
-            {
-                dice[n].Value = 2;
-                dice[n].image = Image.FromFile("Images/" + dice[n].Value + "u.png");
-                picGameDice[n].Image = dice[n].image;
-            }*/
-
-            Game_Dice[0].Value = 3;
-            Game_Dice[1].Value = 3;
-            Game_Dice[2].Value = 3;
-            Game_Dice[3].Value = 2;
-            Game_Dice[4].Value = 2;
-            Game_Dice[5].Value = 1;
-            Game_Dice[0].Dice_Image = Image.FromFile("Images/" + Game_Dice[0].Value + "u.png");
-            picGameDice[0].Image = Game_Dice[0].Dice_Image;
-            Game_Dice[1].Dice_Image = Image.FromFile("Images/" + Game_Dice[1].Value + "u.png");
-            picGameDice[1].Image = Game_Dice[1].Dice_Image;
-            Game_Dice[2].Dice_Image = Image.FromFile("Images/" + Game_Dice[2].Value + "u.png");
-            picGameDice[2].Image = Game_Dice[2].Dice_Image;
-            Game_Dice[3].Dice_Image = Image.FromFile("Images/" + Game_Dice[3].Value + "u.png");
-            picGameDice[3].Image = Game_Dice[3].Dice_Image;
-            Game_Dice[4].Dice_Image = Image.FromFile("Images/" + Game_Dice[4].Value + "u.png");
-            picGameDice[4].Image = Game_Dice[4].Dice_Image;
-            Game_Dice[5].Dice_Image = Image.FromFile("Images/" + Game_Dice[5].Value + "u.png");
-            picGameDice[5].Image = Game_Dice[5].Dice_Image;
-
-            btnRoll.Enabled = false;
-            btnClaim.Enabled = true;
-            grpCombinations.Enabled = true;
-            btnEndTurn.Enabled = false;
-            lblHotDice.Visible = false;
-        }
-
-        private void btnClaim_Click(object sender, EventArgs e)
-        {
-            bool anything = false;
-            for (int i = 0; i < Total_Combos; i++)
-            {
-                if (chkCombos[i].Checked)
-                {
-                    anything = true;
-                    break;
-                }
-            }
-
-            if (!anything)
-            {
-                DialogResult answer = MessageBox.Show("You havent selected any combinations. Do you want to end your turn and claim 0? Press no to chance!", "Invalid Selection", MessageBoxButtons.YesNoCancel);
-                if (answer == DialogResult.Yes)
-                {
-                    Game_Player.Turn_Score = 0;
-                    lblTurnScore.Text = "Turn Score: 0";
-                    lblProjectedScore.Text = "Projected Score: 0";
-                    EndTurn();
-                    return;
-                }
-                else if (answer == DialogResult.No)
-                {
-                    return;
-                }
-            }
-
-            CheckCombinations();
-        }
-
         private void CheckCombinations()
         {
             Game_Player.Can_Claim = false;
-            //Five - 50 Points
-            if (chkCombos[0].Checked)
-            {
-                for (int i = 0; i < Total_Dice; i++)
-                {
-                    if (!Game_Dice[i].Claimed)
-                    {
-                        if (Game_Dice[i].Value == 5)
-                        {
-                            Game_Dice[i].Claimed = true;
-                            Game_Dice[i].Dice_Image = Image.FromFile("Images/5c.png");
-                            picGameDice[i].Image = Game_Dice[i].Dice_Image;
-                            Game_Player.Can_Claim = true;
-                            Game_Player.Turn_Score += 50;
-                            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
-                            break;
-                        }
-                    }
-                }
-            }
-            //1 Pair Any Number - 50 Points
-            if (chkCombos[1].Checked)
-            {
-                bool done = false;
-                for (int i = 0; i < Total_Dice; i++)
-                {
-                    if (!Game_Dice[i].Claimed)
-                    {
-                        for (int n = 0; n < Total_Dice; n++)
-                        {
-                            if (Game_Dice[n].Id != Game_Dice[i].Id)
-                            {
-                                if (!Game_Dice[n].Claimed)
-                                {
-                                    if (Game_Dice[i].Value == Game_Dice[n].Value)
-                                    {
-                                        Game_Dice[i].Claimed = true;
-                                        Game_Dice[n].Claimed = true;
-                                        Game_Dice[i].Dice_Image = Image.FromFile("Images/" + Game_Dice[i].Value + "c.png");
-                                        Game_Dice[n].Dice_Image = Image.FromFile("Images/" + Game_Dice[n].Value + "c.png");
-                                        picGameDice[i].Image = Game_Dice[i].Dice_Image;
-                                        picGameDice[n].Image = Game_Dice[n].Dice_Image;
-                                        Game_Player.Can_Claim = true;
-                                        Game_Player.Turn_Score += 50;
-                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
-                                        done = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (done) { break; }
-                }
-            }
-            //One - 100 Points
-            if (chkCombos[2].Checked)
-            {
-                for (int i = 0; i < Total_Dice; i++)
-                {
-                    if (!Game_Dice[i].Claimed)
-                    {
-                        if (Game_Dice[i].Value == 1)
-                        {
-                            Game_Dice[i].Claimed = true;
-                            Game_Dice[i].Dice_Image = Image.FromFile("Images/1c.png");
-                            picGameDice[i].Image = Game_Dice[i].Dice_Image;
-                            Game_Player.Can_Claim = true;
-                            Game_Player.Turn_Score += 100;
-                            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
-                            break;
-                        }
-                    }
-                }
-            }
             //3 x Twos - 200 Points
-            if (chkCombos[3].Checked)
+            if (chkCombos[0].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -337,7 +159,7 @@ namespace Garbage
                 }
             }
             //Straight One-Two-Three - 250 Points
-            if (chkCombos[4].Checked)
+            if (chkCombos[1].Checked)
             {
                 bool one = false;
                 bool two = false;
@@ -409,7 +231,7 @@ namespace Garbage
                 }
             }
             //3 x Threes - 300 Points
-            if (chkCombos[5].Checked)
+            if (chkCombos[2].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -460,7 +282,7 @@ namespace Garbage
                 }
             }
             //3 x Fours - 400 Points
-            if (chkCombos[6].Checked)
+            if (chkCombos[3].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -511,7 +333,7 @@ namespace Garbage
                 }
             }
             //3 x Fives - 500 Points
-            if (chkCombos[7].Checked)
+            if (chkCombos[4].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -562,7 +384,7 @@ namespace Garbage
                 }
             }
             //2 Pairs of Any 2 Numbers - 500 Points
-            if (chkCombos[8].Checked)
+            if (chkCombos[5].Checked)
             {
                 bool firstPair = false;
                 bool secondPair = false;
@@ -649,7 +471,7 @@ namespace Garbage
                 }
             }
             //Straight One-Two-Three-Four - 500 Points
-            if (chkCombos[9].Checked)
+            if (chkCombos[6].Checked)
             {
                 bool one = false;
                 bool two = false;
@@ -743,7 +565,7 @@ namespace Garbage
                 }
             }
             //3 x Sixes - 600 Points
-            if (chkCombos[10].Checked)
+            if (chkCombos[7].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -794,7 +616,7 @@ namespace Garbage
                 }
             }
             //3 x Ones - 1000 Points
-            if (chkCombos[11].Checked)
+            if (chkCombos[8].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -845,7 +667,7 @@ namespace Garbage
                 }
             }
             //4 Set Any Number - 1000 Points
-            if (chkCombos[12].Checked)
+            if (chkCombos[9].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -906,7 +728,7 @@ namespace Garbage
                 }
             }
             //Full House Set Of 3 and 2 Pair - 1000 Points
-            if (chkCombos[13].Checked)
+            if (chkCombos[10].Checked)
             {
                 bool done = false;
                 bool done2 = false;
@@ -953,21 +775,27 @@ namespace Garbage
 
                 for (int o = 0; o < Total_Dice; o++)
                 {
-                    if (!Game_Dice[o].Claimed)
+                    if (Game_Dice[o].Id != firstIds[0] && Game_Dice[o].Id != firstIds[1] && Game_Dice[o].Id != firstIds[2])
                     {
-                        for (int p = 0; p < Total_Dice; p++)
+                        if (!Game_Dice[o].Claimed)
                         {
-                            if (Game_Dice[p].Id != Game_Dice[o].Id)
+                            for (int p = 0; p < Total_Dice; p++)
                             {
-                                if (!Game_Dice[p].Claimed)
+                                if (Game_Dice[p].Id != firstIds[0] && Game_Dice[p].Id != firstIds[1] && Game_Dice[p].Id != firstIds[2])
                                 {
-                                    if (Game_Dice[p].Value == Game_Dice[o].Value)
+                                    if (Game_Dice[p].Id != Game_Dice[o].Id)
                                     {
-                                        pair = true;
-                                        secondIds[0] = o;
-                                        secondIds[1] = p;
-                                        done2 = true;
-                                        break;
+                                        if (!Game_Dice[p].Claimed)
+                                        {
+                                            if (Game_Dice[p].Value == Game_Dice[o].Value)
+                                            {
+                                                pair = true;
+                                                secondIds[0] = o;
+                                                secondIds[1] = p;
+                                                done2 = true;
+                                                break;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -983,7 +811,6 @@ namespace Garbage
                     int m = firstIds[2];
                     int o = secondIds[0];
                     int p = secondIds[1];
-
                     Game_Dice[i].Claimed = true;
                     Game_Dice[n].Claimed = true;
                     Game_Dice[m].Claimed = true;
@@ -1005,7 +832,7 @@ namespace Garbage
                 }
             }
             //Straight One-Two-Three-Four-Five - 1000 Points
-            if (chkCombos[14].Checked)
+            if (chkCombos[11].Checked)
             {
                 bool one = false;
                 bool two = false;
@@ -1119,7 +946,7 @@ namespace Garbage
                 }
             }
             //5 Set Any Number - 2000 Points
-            if (chkCombos[15].Checked)
+            if (chkCombos[12].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -1192,7 +1019,7 @@ namespace Garbage
                 }
             }
             //3 Set and 3 Set Any Number - 2000 Points
-            if (chkCombos[16].Checked)
+            if (chkCombos[13].Checked)
             {
                 bool firstPair = false;
                 bool secondPair = false;
@@ -1303,7 +1130,7 @@ namespace Garbage
                 }
             }
             //3 Pairs of 2 Any Number - 2000 Points
-            if (chkCombos[17].Checked)
+            if (chkCombos[14].Checked)
             {
                 bool firstPair = false;
                 bool secondPair = false;
@@ -1428,7 +1255,7 @@ namespace Garbage
                 }
             }
             //Straight One-Two-Three-Four-Five-Six - 3000 Points
-            if (chkCombos[18].Checked)
+            if (chkCombos[15].Checked)
             {
                 bool one = false;
                 bool two = false;
@@ -1563,7 +1390,7 @@ namespace Garbage
                 }
             }
             //6 Set Any Number - 3000 Points
-            if (chkCombos[19].Checked)
+            if (chkCombos[16].Checked)
             {
                 bool done = false;
                 for (int i = 0; i < Total_Dice; i++)
@@ -1649,7 +1476,7 @@ namespace Garbage
                 }
             }
             //4 Set Any Number And 2 Pair Any Number - 3000 Points
-            if (chkCombos[20].Checked)
+            if (chkCombos[17].Checked)
             {
                 bool done = false;
                 bool done2 = false;
@@ -1767,6 +1594,81 @@ namespace Garbage
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
                 }
             }
+            //1 Pair Any Number - 50 Points
+            if (chkCombos[18].Checked)
+            {
+                bool done = false;
+                for (int i = 0; i < Total_Dice; i++)
+                {
+                    if (!Game_Dice[i].Claimed)
+                    {
+                        for (int n = 0; n < Total_Dice; n++)
+                        {
+                            if (Game_Dice[n].Id != Game_Dice[i].Id)
+                            {
+                                if (!Game_Dice[n].Claimed)
+                                {
+                                    if (Game_Dice[i].Value == Game_Dice[n].Value)
+                                    {
+                                        Game_Dice[i].Claimed = true;
+                                        Game_Dice[n].Claimed = true;
+                                        Game_Dice[i].Dice_Image = Image.FromFile("Images/" + Game_Dice[i].Value + "c.png");
+                                        Game_Dice[n].Dice_Image = Image.FromFile("Images/" + Game_Dice[n].Value + "c.png");
+                                        picGameDice[i].Image = Game_Dice[i].Dice_Image;
+                                        picGameDice[n].Image = Game_Dice[n].Dice_Image;
+                                        Game_Player.Can_Claim = true;
+                                        Game_Player.Turn_Score += 50;
+                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                        done = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (done) { break; }
+                }
+            }
+            //One - 100 Points
+            if (chkCombos[19].Checked)
+            {
+                for (int i = 0; i < Total_Dice; i++)
+                {
+                    if (!Game_Dice[i].Claimed)
+                    {
+                        if (Game_Dice[i].Value == 1)
+                        {
+                            Game_Dice[i].Claimed = true;
+                            Game_Dice[i].Dice_Image = Image.FromFile("Images/1c.png");
+                            picGameDice[i].Image = Game_Dice[i].Dice_Image;
+                            Game_Player.Can_Claim = true;
+                            Game_Player.Turn_Score += 100;
+                            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                            break;
+                        }
+                    }
+                }
+            }
+            //Five - 50 Points
+            if (chkCombos[20].Checked)
+            {
+                for (int i = 0; i < Total_Dice; i++)
+                {
+                    if (!Game_Dice[i].Claimed)
+                    {
+                        if (Game_Dice[i].Value == 5)
+                        {
+                            Game_Dice[i].Claimed = true;
+                            Game_Dice[i].Dice_Image = Image.FromFile("Images/5c.png");
+                            picGameDice[i].Image = Game_Dice[i].Dice_Image;
+                            Game_Player.Can_Claim = true;
+                            Game_Player.Turn_Score += 50;
+                            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                            break;
+                        }
+                    }
+                }
+            }
 
             //Can we claim something? If not then we need to or claim a 0, or chance it...
             if (Game_Player.Can_Claim)
@@ -1854,27 +1756,130 @@ namespace Garbage
             btnEndTurn.Enabled = false;
         }
 
+        private void ClaimDice()
+        {
+            bool anything = false;
+            for (int i = 0; i < Total_Combos; i++)
+            {
+                if (chkCombos[i].Checked)
+                {
+                    anything = true;
+                    break;
+                }
+            }
+
+            if (!anything)
+            {
+                DialogResult answer = MessageBox.Show("You havent selected any combinations. Do you want to end your turn and claim 0? Press no to chance!", "Invalid Selection", MessageBoxButtons.YesNoCancel);
+                if (answer == DialogResult.Yes)
+                {
+                    Game_Player.Turn_Score = 0;
+                    lblTurnScore.Text = "Turn Score: 0";
+                    lblProjectedScore.Text = "Projected Score: 0";
+                    EndTurn();
+                    return;
+                }
+                else if (answer == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            CheckCombinations();
+        }
+
+        private void RollDice()
+        {
+            var random = new Random();
+
+            /*for (int i = 0; i < Total_Dice; i++)
+            {
+                if (!Game_Dice[i].Claimed)
+                {
+                    Game_Dice[i].Value = random.Next(1, 6);
+                    //dice[i].Value = 1;
+                    Game_Dice[i].Dice_Image = Image.FromFile("Images/" + Game_Dice[i].Value + "u.png");
+                    picGameDice[i].Image = Game_Dice[i].Dice_Image;
+                }
+            }
+
+            //For testing
+            /*for (int n = 2; n < Total_Dice; n++)
+            {
+                dice[n].Value = 2;
+                dice[n].image = Image.FromFile("Images/" + dice[n].Value + "u.png");
+                picGameDice[n].Image = dice[n].image;
+            }*/
+
+            Game_Dice[0].Value = 3;
+            Game_Dice[1].Value = 3;
+            Game_Dice[2].Value = 3;
+            Game_Dice[3].Value = 2;
+            Game_Dice[4].Value = 2;
+            Game_Dice[5].Value = 1;
+            Game_Dice[0].Dice_Image = Image.FromFile("Images/" + Game_Dice[0].Value + "u.png");
+            picGameDice[0].Image = Game_Dice[0].Dice_Image;
+            Game_Dice[1].Dice_Image = Image.FromFile("Images/" + Game_Dice[1].Value + "u.png");
+            picGameDice[1].Image = Game_Dice[1].Dice_Image;
+            Game_Dice[2].Dice_Image = Image.FromFile("Images/" + Game_Dice[2].Value + "u.png");
+            picGameDice[2].Image = Game_Dice[2].Dice_Image;
+            Game_Dice[3].Dice_Image = Image.FromFile("Images/" + Game_Dice[3].Value + "u.png");
+            picGameDice[3].Image = Game_Dice[3].Dice_Image;
+            Game_Dice[4].Dice_Image = Image.FromFile("Images/" + Game_Dice[4].Value + "u.png");
+            picGameDice[4].Image = Game_Dice[4].Dice_Image;
+            Game_Dice[5].Dice_Image = Image.FromFile("Images/" + Game_Dice[5].Value + "u.png");
+            picGameDice[5].Image = Game_Dice[5].Dice_Image;
+
+            btnRoll.Enabled = false;
+            btnClaim.Enabled = true;
+            grpCombinations.Enabled = true;
+            btnEndTurn.Enabled = false;
+            lblHotDice.Visible = false;
+        }
+
+        private void CheckKeys(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.R) { btnRoll.Enabled = true; }
+
+            if (e.KeyCode == Keys.N) { NewGame(); }
+
+            if (e.KeyCode == Keys.End) { ExitGame(); }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExitGame();
+        }
+
+        private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Rules rules = new Rules();
+            rules.ShowDialog();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+        }
+
+        private void btnRoll_Click(object sender, EventArgs e)
+        {
+            RollDice();
+        }
+
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
             EndTurn();
         }
 
+        private void btnClaim_Click(object sender, EventArgs e)
+        {
+            ClaimDice();
+        }
+
         private void Garbage_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.R)
-            {
-                if (!btnRoll.Enabled) { btnRoll.Enabled = true; }
-            }
-
-            if (e.KeyCode == Keys.N)
-            {
-                NewGame();
-            }
-
-            if (e.KeyCode == Keys.Escape)
-            {
-                ExitGame();
-            }
+            CheckKeys(e);
         }
     }
 }

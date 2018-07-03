@@ -11,9 +11,6 @@ deducted 500 points. If you succeeded then you continue until you choose to stop
 If you fail another Chance you are deducted 500 points multiplied by the amount of successful Chances.
 
 Combinations:<br>
-Five - 50 Points<br>
-1 Pair Any Number - 50 Points<br>
-One - 100 Points<br>
 3 x Twos - 200 Points<br>
 Straight One-Two-Three - 250 Points<br>
 3 x Threes - 300 Points<br>
@@ -31,7 +28,10 @@ Straight One-Two-Three-Four-Five - 1000 Points<br>
 3 Pairs of 2 Any Number - 2000 Points<br>
 Straight One-Two-Three-Four-Five-Six - 3000 Points<br>
 6 Set Any Number - 3000 Points<br>
-4 Set Any Number And 2 Pair Any Number - 3000 Points
+4 Set Any Number And 2 Pair Any Number - 3000 Points<br>
+1 Pair Any Number - 50 Points<br>
+One - 100 Points<br>
+Five - 50 Points<br>
 
 Special Rules:
 Chances - Chances allow you to continue when you've rolled nothing. If you successfully roll a One, Five or Combination you continue 
@@ -45,3 +45,12 @@ Adds - Each game you are alloted 2 adds. This allows you to create a combination
 6 Ones in 6 different turns you can use an add to make it a combination of 6 Set Any Number and claim 3000 points instead of 600. After 
 using an add you must end your turn and take the total you rolled. You may use 1 add from the beginning and the second after the halfway
 mark of the game. You cannot use both in the same quarter.
+
+Dice combinations are examined in the code going from left to right, the top-left die being number 1 and the bottom-left die being number 4.
+Example: 
+1-2-3
+4-5-6
+
+Combinations are checked in descending order starting with the first you have checked. Because of this when you sometimes select 1 Pair any
+number and a single one it will only claim that pair of ones due to it being first in the priority check. This is still a work in progress
+so once the list is better prioritized this wont occur much if at all.
