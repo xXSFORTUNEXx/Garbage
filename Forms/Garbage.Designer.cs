@@ -46,7 +46,6 @@
             this.lblHotDice = new System.Windows.Forms.Label();
             this.btnRoll = new System.Windows.Forms.Button();
             this.btnClaim = new System.Windows.Forms.Button();
-            this.btnChance = new System.Windows.Forms.Button();
             this.btnEndTurn = new System.Windows.Forms.Button();
             this.mnuMain.SuspendLayout();
             this.grpPlayerCard.SuspendLayout();
@@ -222,16 +221,6 @@
             this.btnClaim.UseVisualStyleBackColor = true;
             this.btnClaim.Click += new System.EventHandler(this.btnClaim_Click);
             // 
-            // btnChance
-            // 
-            this.btnChance.Enabled = false;
-            this.btnChance.Location = new System.Drawing.Point(180, 569);
-            this.btnChance.Name = "btnChance";
-            this.btnChance.Size = new System.Drawing.Size(144, 23);
-            this.btnChance.TabIndex = 27;
-            this.btnChance.Text = "Chance";
-            this.btnChance.UseVisualStyleBackColor = true;
-            // 
             // btnEndTurn
             // 
             this.btnEndTurn.Enabled = false;
@@ -249,7 +238,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 636);
             this.ControlBox = false;
-            this.Controls.Add(this.btnChance);
             this.Controls.Add(this.btnEndTurn);
             this.Controls.Add(this.btnClaim);
             this.Controls.Add(this.btnRoll);
@@ -290,7 +278,6 @@
         private System.Windows.Forms.GroupBox grpPlayerCard;
         private System.Windows.Forms.Button btnRoll;
         private System.Windows.Forms.Button btnClaim;
-        private System.Windows.Forms.Button btnChance;
         private System.Windows.Forms.Button btnEndTurn;
         private System.Windows.Forms.Label lblHotDice;
     }

@@ -11,15 +11,15 @@ namespace Garbage.Classes
     {
         public int Id;
         public int Value;
-        public bool Saved;
-        public Image image;
+        public bool Claimed;
+        public Image Dice_Image;
 
         public Dice(int id)
         {
             Id = id;
             Value = 1;
-            Saved = false;
-            image = Image.FromFile("Images/" + (Id + 1) + "u.png");
+            Claimed = false;
+            Dice_Image = Image.FromFile("Images/" + (Id + 1) + "u.png");
         }
     }
 }
