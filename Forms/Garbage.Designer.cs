@@ -41,14 +41,17 @@
             this.lblTurnScore = new System.Windows.Forms.Label();
             this.lblProjectedScore = new System.Windows.Forms.Label();
             this.lblAdds = new System.Windows.Forms.Label();
-            this.lblChancesTaken = new System.Windows.Forms.Label();
+            this.lblCurrentTurn = new System.Windows.Forms.Label();
             this.grpPlayerCard = new System.Windows.Forms.GroupBox();
+            this.grpScoreboard = new System.Windows.Forms.GroupBox();
+            this.grpOptions = new System.Windows.Forms.GroupBox();
             this.lblHotDice = new System.Windows.Forms.Label();
-            this.btnRoll = new System.Windows.Forms.Button();
-            this.btnClaim = new System.Windows.Forms.Button();
             this.btnEndTurn = new System.Windows.Forms.Button();
+            this.btnClaim = new System.Windows.Forms.Button();
+            this.btnRoll = new System.Windows.Forms.Button();
             this.mnuMain.SuspendLayout();
             this.grpPlayerCard.SuspendLayout();
+            this.grpOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -120,7 +123,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(26, 27);
+            this.lblName.Location = new System.Drawing.Point(19, 27);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(67, 13);
             this.lblName.TabIndex = 0;
@@ -129,7 +132,7 @@
             // lblTotalScore
             // 
             this.lblTotalScore.AutoSize = true;
-            this.lblTotalScore.Location = new System.Drawing.Point(26, 50);
+            this.lblTotalScore.Location = new System.Drawing.Point(19, 50);
             this.lblTotalScore.Name = "lblTotalScore";
             this.lblTotalScore.Size = new System.Drawing.Size(74, 13);
             this.lblTotalScore.TabIndex = 1;
@@ -138,7 +141,7 @@
             // lblTurnScore
             // 
             this.lblTurnScore.AutoSize = true;
-            this.lblTurnScore.Location = new System.Drawing.Point(26, 73);
+            this.lblTurnScore.Location = new System.Drawing.Point(19, 73);
             this.lblTurnScore.Name = "lblTurnScore";
             this.lblTurnScore.Size = new System.Drawing.Size(72, 13);
             this.lblTurnScore.TabIndex = 2;
@@ -147,7 +150,7 @@
             // lblProjectedScore
             // 
             this.lblProjectedScore.AutoSize = true;
-            this.lblProjectedScore.Location = new System.Drawing.Point(26, 96);
+            this.lblProjectedScore.Location = new System.Drawing.Point(19, 96);
             this.lblProjectedScore.Name = "lblProjectedScore";
             this.lblProjectedScore.Size = new System.Drawing.Size(95, 13);
             this.lblProjectedScore.TabIndex = 3;
@@ -156,25 +159,24 @@
             // lblAdds
             // 
             this.lblAdds.AutoSize = true;
-            this.lblAdds.Location = new System.Drawing.Point(26, 119);
+            this.lblAdds.Location = new System.Drawing.Point(19, 119);
             this.lblAdds.Name = "lblAdds";
             this.lblAdds.Size = new System.Drawing.Size(96, 13);
             this.lblAdds.TabIndex = 4;
             this.lblAdds.Text = "Remaining Adds: 0";
             // 
-            // lblChancesTaken
+            // lblCurrentTurn
             // 
-            this.lblChancesTaken.AutoSize = true;
-            this.lblChancesTaken.Location = new System.Drawing.Point(26, 142);
-            this.lblChancesTaken.Name = "lblChancesTaken";
-            this.lblChancesTaken.Size = new System.Drawing.Size(143, 13);
-            this.lblChancesTaken.TabIndex = 5;
-            this.lblChancesTaken.Text = "Chances Taken This Turn: 0";
+            this.lblCurrentTurn.AutoSize = true;
+            this.lblCurrentTurn.Location = new System.Drawing.Point(19, 142);
+            this.lblCurrentTurn.Name = "lblCurrentTurn";
+            this.lblCurrentTurn.Size = new System.Drawing.Size(78, 13);
+            this.lblCurrentTurn.TabIndex = 5;
+            this.lblCurrentTurn.Text = "Current Turn: 1";
             // 
             // grpPlayerCard
             // 
-            this.grpPlayerCard.Controls.Add(this.lblHotDice);
-            this.grpPlayerCard.Controls.Add(this.lblChancesTaken);
+            this.grpPlayerCard.Controls.Add(this.lblCurrentTurn);
             this.grpPlayerCard.Controls.Add(this.lblAdds);
             this.grpPlayerCard.Controls.Add(this.lblProjectedScore);
             this.grpPlayerCard.Controls.Add(this.lblTurnScore);
@@ -182,55 +184,77 @@
             this.grpPlayerCard.Controls.Add(this.lblName);
             this.grpPlayerCard.Location = new System.Drawing.Point(12, 255);
             this.grpPlayerCard.Name = "grpPlayerCard";
-            this.grpPlayerCard.Size = new System.Drawing.Size(312, 178);
+            this.grpPlayerCard.Size = new System.Drawing.Size(184, 178);
             this.grpPlayerCard.TabIndex = 8;
             this.grpPlayerCard.TabStop = false;
             this.grpPlayerCard.Text = "Player Card";
             // 
+            // grpScoreboard
+            // 
+            this.grpScoreboard.Location = new System.Drawing.Point(12, 440);
+            this.grpScoreboard.Name = "grpScoreboard";
+            this.grpScoreboard.Size = new System.Drawing.Size(312, 181);
+            this.grpScoreboard.TabIndex = 29;
+            this.grpScoreboard.TabStop = false;
+            this.grpScoreboard.Text = "Scoreboard";
+            // 
+            // grpOptions
+            // 
+            this.grpOptions.Controls.Add(this.lblHotDice);
+            this.grpOptions.Controls.Add(this.btnEndTurn);
+            this.grpOptions.Controls.Add(this.btnClaim);
+            this.grpOptions.Controls.Add(this.btnRoll);
+            this.grpOptions.Location = new System.Drawing.Point(203, 255);
+            this.grpOptions.Name = "grpOptions";
+            this.grpOptions.Size = new System.Drawing.Size(121, 178);
+            this.grpOptions.TabIndex = 30;
+            this.grpOptions.TabStop = false;
+            this.grpOptions.Text = "Options";
+            // 
             // lblHotDice
             // 
             this.lblHotDice.AutoSize = true;
-            this.lblHotDice.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHotDice.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHotDice.ForeColor = System.Drawing.Color.Red;
-            this.lblHotDice.Location = new System.Drawing.Point(181, 16);
+            this.lblHotDice.Location = new System.Drawing.Point(14, 89);
             this.lblHotDice.Name = "lblHotDice";
-            this.lblHotDice.Size = new System.Drawing.Size(125, 37);
-            this.lblHotDice.TabIndex = 28;
+            this.lblHotDice.Size = new System.Drawing.Size(92, 29);
+            this.lblHotDice.TabIndex = 32;
             this.lblHotDice.Text = "Hot Dice!";
             this.lblHotDice.Visible = false;
-            // 
-            // btnRoll
-            // 
-            this.btnRoll.Enabled = false;
-            this.btnRoll.Location = new System.Drawing.Point(12, 439);
-            this.btnRoll.Name = "btnRoll";
-            this.btnRoll.Size = new System.Drawing.Size(144, 23);
-            this.btnRoll.TabIndex = 9;
-            this.btnRoll.Text = "Roll";
-            this.btnRoll.UseVisualStyleBackColor = true;
-            this.btnRoll.Click += new System.EventHandler(this.btnRoll_Click);
-            // 
-            // btnClaim
-            // 
-            this.btnClaim.Enabled = false;
-            this.btnClaim.Location = new System.Drawing.Point(12, 468);
-            this.btnClaim.Name = "btnClaim";
-            this.btnClaim.Size = new System.Drawing.Size(144, 23);
-            this.btnClaim.TabIndex = 10;
-            this.btnClaim.Text = "Claim Dice";
-            this.btnClaim.UseVisualStyleBackColor = true;
-            this.btnClaim.Click += new System.EventHandler(this.btnClaim_Click);
             // 
             // btnEndTurn
             // 
             this.btnEndTurn.Enabled = false;
-            this.btnEndTurn.Location = new System.Drawing.Point(180, 598);
+            this.btnEndTurn.Location = new System.Drawing.Point(4, 135);
             this.btnEndTurn.Name = "btnEndTurn";
-            this.btnEndTurn.Size = new System.Drawing.Size(144, 23);
-            this.btnEndTurn.TabIndex = 26;
+            this.btnEndTurn.Size = new System.Drawing.Size(111, 23);
+            this.btnEndTurn.TabIndex = 31;
             this.btnEndTurn.Text = "End Turn";
             this.btnEndTurn.UseVisualStyleBackColor = true;
             this.btnEndTurn.Click += new System.EventHandler(this.btnEndTurn_Click);
+            // 
+            // btnClaim
+            // 
+            this.btnClaim.Enabled = false;
+            this.btnClaim.Location = new System.Drawing.Point(4, 51);
+            this.btnClaim.Name = "btnClaim";
+            this.btnClaim.Size = new System.Drawing.Size(111, 23);
+            this.btnClaim.TabIndex = 30;
+            this.btnClaim.Text = "Claim Dice";
+            this.btnClaim.UseVisualStyleBackColor = true;
+            this.btnClaim.Click += new System.EventHandler(this.btnClaim_Click);
+            // 
+            // btnRoll
+            // 
+            this.btnRoll.Enabled = false;
+            this.btnRoll.Location = new System.Drawing.Point(4, 22);
+            this.btnRoll.Name = "btnRoll";
+            this.btnRoll.Size = new System.Drawing.Size(111, 23);
+            this.btnRoll.TabIndex = 29;
+            this.btnRoll.Text = "Roll";
+            this.btnRoll.UseVisualStyleBackColor = true;
+            this.btnRoll.Click += new System.EventHandler(this.btnRoll_Click);
             // 
             // Garbage
             // 
@@ -238,9 +262,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 636);
             this.ControlBox = false;
-            this.Controls.Add(this.btnEndTurn);
-            this.Controls.Add(this.btnClaim);
-            this.Controls.Add(this.btnRoll);
+            this.Controls.Add(this.grpOptions);
+            this.Controls.Add(this.grpScoreboard);
             this.Controls.Add(this.grpPlayerCard);
             this.Controls.Add(this.grpCombinations);
             this.Controls.Add(this.mnuMain);
@@ -254,6 +277,8 @@
             this.mnuMain.PerformLayout();
             this.grpPlayerCard.ResumeLayout(false);
             this.grpPlayerCard.PerformLayout();
+            this.grpOptions.ResumeLayout(false);
+            this.grpOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,12 +299,14 @@
         private System.Windows.Forms.Label lblTurnScore;
         private System.Windows.Forms.Label lblProjectedScore;
         private System.Windows.Forms.Label lblAdds;
-        private System.Windows.Forms.Label lblChancesTaken;
+        private System.Windows.Forms.Label lblCurrentTurn;
         private System.Windows.Forms.GroupBox grpPlayerCard;
-        private System.Windows.Forms.Button btnRoll;
-        private System.Windows.Forms.Button btnClaim;
-        private System.Windows.Forms.Button btnEndTurn;
+        private System.Windows.Forms.GroupBox grpScoreboard;
+        private System.Windows.Forms.GroupBox grpOptions;
         private System.Windows.Forms.Label lblHotDice;
+        private System.Windows.Forms.Button btnEndTurn;
+        private System.Windows.Forms.Button btnClaim;
+        private System.Windows.Forms.Button btnRoll;
     }
 }
 

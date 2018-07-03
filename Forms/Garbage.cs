@@ -12,14 +12,17 @@ namespace Garbage
         private Dice[] Game_Dice = new Dice[6];
         private PictureBox[] picGameDice = new PictureBox[6];
         private CheckBox[] chkCombos = new CheckBox[21];
+        private Label[] lblScoreboard = new Label[10];
         const int Total_Dice = 6;
         const int Total_Combos = 21;
+        const int Total_Turns = 10;
 
         public Garbage()
         {
             InitializeComponent();
             CreateCombinations();
             CreateDice();
+            CreateScoreboard();
             for (int i = 0; i < Total_Dice; i++)
             {
                 Game_Dice[i] = new Dice(i);
@@ -89,6 +92,29 @@ namespace Garbage
             chkCombos[20].Text = "Five - 50 Points";
         }
 
+        private void CreateScoreboard()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                lblScoreboard[i] = new Label();
+                lblScoreboard[i].Location = new Point(12, ((i + 1) * 22));
+                lblScoreboard[i].Size = new Size(100, 20);
+                grpScoreboard.Controls.Add(lblScoreboard[i]);
+                lblScoreboard[i].Text = (i + 1) + ": ";
+            }
+
+            int n = 0;
+            for (int i = 7; i < 10; i++)
+            {
+                lblScoreboard[i] = new Label();
+                lblScoreboard[i].Location = new Point(115, ((n + 1) * 22));
+                n += 1;
+                lblScoreboard[i].Size = new Size(75, 20);
+                grpScoreboard.Controls.Add(lblScoreboard[i]);
+                lblScoreboard[i].Text = (i + 1) + ": ";
+            }
+        }
+
         private void ExitGame()
         {
             DialogResult answer = MessageBox.Show("Are you sure you wish to exit?", "Exit", MessageBoxButtons.YesNo);
@@ -100,7 +126,7 @@ namespace Garbage
             string name = Interaction.InputBox("Please enter your name: ", "Enter Name", "John Doe");
             Game_Player = new Player(name);
             lblName.Text = "Name: " + name;
-            lblAdds.Text = "Adds: " + Game_Player.Adds;
+            lblAdds.Text = "Adds: " + Game_Player.Adds;            
             btnRoll.Enabled = true;
         }
 
@@ -141,8 +167,8 @@ namespace Garbage
                                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
-                                                        Game_Player.Turn_Score += 200;
-                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                        Game_Player.Current_Turn_Score += 200;
+                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
                                                     }
@@ -226,8 +252,8 @@ namespace Garbage
                     picGameDice[n].Image = Game_Dice[n].Dice_Image;
                     picGameDice[m].Image = Game_Dice[m].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 250;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 250;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //3 x Threes - 300 Points
@@ -264,8 +290,8 @@ namespace Garbage
                                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
-                                                        Game_Player.Turn_Score += 300;
-                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                        Game_Player.Current_Turn_Score += 300;
+                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
                                                     }
@@ -315,8 +341,8 @@ namespace Garbage
                                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
-                                                        Game_Player.Turn_Score += 400;
-                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                        Game_Player.Current_Turn_Score += 400;
+                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
                                                     }
@@ -366,8 +392,8 @@ namespace Garbage
                                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
-                                                        Game_Player.Turn_Score += 500;
-                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                        Game_Player.Current_Turn_Score += 500;
+                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
                                                     }
@@ -466,8 +492,8 @@ namespace Garbage
                     picGameDice[m].Image = Game_Dice[m].Dice_Image;
                     picGameDice[o].Image = Game_Dice[o].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 500;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 500;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //Straight One-Two-Three-Four - 500 Points
@@ -560,8 +586,8 @@ namespace Garbage
                     picGameDice[o].Image = Game_Dice[o].Dice_Image;
 
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 500;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 500;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //3 x Sixes - 600 Points
@@ -598,8 +624,8 @@ namespace Garbage
                                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
-                                                        Game_Player.Turn_Score += 600;
-                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                        Game_Player.Current_Turn_Score += 600;
+                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
                                                     }
@@ -649,8 +675,8 @@ namespace Garbage
                                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
-                                                        Game_Player.Turn_Score += 1000;
-                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                        Game_Player.Current_Turn_Score += 1000;
+                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
                                                     }
@@ -707,8 +733,8 @@ namespace Garbage
                                                                 picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                                 picGameDice[o].Image = Game_Dice[o].Dice_Image;
                                                                 Game_Player.Can_Claim = true;
-                                                                Game_Player.Turn_Score += 1000;
-                                                                lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                                Game_Player.Current_Turn_Score += 1000;
+                                                                lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                                 done = true;
                                                                 break;
                                                             }
@@ -827,8 +853,8 @@ namespace Garbage
                     picGameDice[o].Image = Game_Dice[o].Dice_Image;
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 1000;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 1000;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //Straight One-Two-Three-Four-Five - 1000 Points
@@ -941,8 +967,8 @@ namespace Garbage
                     picGameDice[o].Image = Game_Dice[o].Dice_Image;
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 1000;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 1000;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //5 Set Any Number - 2000 Points
@@ -995,8 +1021,8 @@ namespace Garbage
                                                                             picGameDice[o].Image = Game_Dice[o].Dice_Image;
                                                                             picGameDice[p].Image = Game_Dice[p].Dice_Image;
                                                                             Game_Player.Can_Claim = true;
-                                                                            Game_Player.Turn_Score += 2000;
-                                                                            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                                            Game_Player.Current_Turn_Score += 2000;
+                                                                            lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                                             done = true;
                                                                             break;
                                                                         }
@@ -1125,8 +1151,8 @@ namespace Garbage
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 2000;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 2000;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //3 Pairs of 2 Any Number - 2000 Points
@@ -1250,8 +1276,8 @@ namespace Garbage
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 2000;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 2000;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //Straight One-Two-Three-Four-Five-Six - 3000 Points
@@ -1385,8 +1411,8 @@ namespace Garbage
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 3000;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 3000;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //6 Set Any Number - 3000 Points
@@ -1448,8 +1474,8 @@ namespace Garbage
                                                                                         picGameDice[p].Image = Game_Dice[p].Dice_Image;
                                                                                         picGameDice[r].Image = Game_Dice[r].Dice_Image;
                                                                                         Game_Player.Can_Claim = true;
-                                                                                        Game_Player.Turn_Score += 3000;
-                                                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                                                                        Game_Player.Current_Turn_Score += 3000;
+                                                                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                                                         done = true;
                                                                                         break;
                                                                                     }
@@ -1590,8 +1616,8 @@ namespace Garbage
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
-                    Game_Player.Turn_Score += 3000;
-                    lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                    Game_Player.Current_Turn_Score += 3000;
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
             //1 Pair Any Number - 50 Points
@@ -1617,8 +1643,8 @@ namespace Garbage
                                         picGameDice[i].Image = Game_Dice[i].Dice_Image;
                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                         Game_Player.Can_Claim = true;
-                                        Game_Player.Turn_Score += 50;
-                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                                        Game_Player.Current_Turn_Score += 50;
+                                        lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                         done = true;
                                         break;
                                     }
@@ -1642,8 +1668,8 @@ namespace Garbage
                             Game_Dice[i].Dice_Image = Image.FromFile("Images/1c.png");
                             picGameDice[i].Image = Game_Dice[i].Dice_Image;
                             Game_Player.Can_Claim = true;
-                            Game_Player.Turn_Score += 100;
-                            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                            Game_Player.Current_Turn_Score += 100;
+                            lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                             break;
                         }
                     }
@@ -1662,8 +1688,8 @@ namespace Garbage
                             Game_Dice[i].Dice_Image = Image.FromFile("Images/5c.png");
                             picGameDice[i].Image = Game_Dice[i].Dice_Image;
                             Game_Player.Can_Claim = true;
-                            Game_Player.Turn_Score += 50;
-                            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
+                            Game_Player.Current_Turn_Score += 50;
+                            lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                             break;
                         }
                     }
@@ -1682,7 +1708,7 @@ namespace Garbage
                 bool checksaved = IsHotDice();
                 if (checksaved) { lblHotDice.Visible = true; Game_Player.Hot_Dice = true; ResetDice(); }
 
-                lblProjectedScore.Text = "Projected Score: " + (Game_Player.Total_Score + Game_Player.Turn_Score);
+                lblProjectedScore.Text = "Projected Score: " + (Game_Player.Total_Score + Game_Player.Current_Turn_Score);
 
                 btnRoll.Enabled = true;
                 btnClaim.Enabled = false;
@@ -1693,7 +1719,7 @@ namespace Garbage
                 DialogResult answer = MessageBox.Show("You havent selected any combinations. Do you want to end your turn and claim 0? Press no to chance!", "Invalid Selection", MessageBoxButtons.YesNoCancel);
                 if (answer == DialogResult.Yes)
                 {
-                    Game_Player.Turn_Score = 0;
+                    Game_Player.Current_Turn_Score = 0;
                     lblTurnScore.Text = "Turn Score: 0";
                     lblProjectedScore.Text = "Projected Score: 0";
                     EndTurn();
@@ -1732,28 +1758,42 @@ namespace Garbage
 
         private void EndTurn()
         {
-            for (int i = 0; i < Total_Dice; i++)
+            if (Game_Player.Turn < Total_Turns)
             {
-                Game_Dice[i].Claimed = false;
-                Game_Dice[i].Dice_Image = Image.FromFile("Images/" + Game_Dice[i].Value + "u.png");
-                picGameDice[i].Image = Game_Dice[i].Dice_Image;
-            }
+                for (int i = 0; i < Total_Dice; i++)
+                {
+                    Game_Dice[i].Claimed = false;
+                    Game_Dice[i].Dice_Image = Image.FromFile("Images/" + Game_Dice[i].Value + "u.png");
+                    picGameDice[i].Image = Game_Dice[i].Dice_Image;
+                }
 
-            for (int i = 0; i < Total_Combos; i++)
+                for (int i = 0; i < Total_Combos; i++)
+                {
+                    chkCombos[i].Checked = false;
+                    grpCombinations.Enabled = false;
+                }
+
+                Game_Player.Total_Score += Game_Player.Current_Turn_Score;
+                Game_Player.Turn_Scores[Game_Player.Turn - 1] = Game_Player.Current_Turn_Score;
+                Game_Player.Current_Turn_Score = 0;
+                lblTotalScore.Text = "Total Score: " + Game_Player.Total_Score;
+                lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
+                lblProjectedScore.Text = "Projected Score: 0";
+                lblCurrentTurn.Text = "Current Turn: " + Game_Player.Turn;
+                lblScoreboard[Game_Player.Turn - 1].Text = Game_Player.Turn + ": " + Game_Player.Turn_Scores[Game_Player.Turn - 1];
+                Game_Player.Turn += 1;
+                Game_Player.Hot_Dice = false;
+                btnRoll.Enabled = true;
+                btnClaim.Enabled = false;
+                btnEndTurn.Enabled = false;
+            }
+            else
             {
-                chkCombos[i].Checked = false;
-                grpCombinations.Enabled = false;
+                DialogResult result = MessageBox.Show("Game over! Your total score was: " + Game_Player.Total_Score + "! Play again?", "Game Over", MessageBoxButtons.YesNo);
+                
+                if (result == DialogResult.Yes) { NewGame(); }
+                else { ExitGame(); }
             }
-
-            Game_Player.Total_Score += Game_Player.Turn_Score;
-            Game_Player.Turn_Score = 0;
-            lblTotalScore.Text = "Total Score: " + Game_Player.Total_Score;
-            lblTurnScore.Text = "Turn Score: " + Game_Player.Turn_Score;
-            lblProjectedScore.Text = "Projected Score: 0";
-            Game_Player.Hot_Dice = false;
-            btnRoll.Enabled = true;
-            btnClaim.Enabled = false;
-            btnEndTurn.Enabled = false;
         }
 
         private void ClaimDice()
@@ -1773,7 +1813,7 @@ namespace Garbage
                 DialogResult answer = MessageBox.Show("You havent selected any combinations. Do you want to end your turn and claim 0? Press no to chance!", "Invalid Selection", MessageBoxButtons.YesNoCancel);
                 if (answer == DialogResult.Yes)
                 {
-                    Game_Player.Turn_Score = 0;
+                    Game_Player.Current_Turn_Score = 0;
                     lblTurnScore.Text = "Turn Score: 0";
                     lblProjectedScore.Text = "Projected Score: 0";
                     EndTurn();
@@ -1792,12 +1832,11 @@ namespace Garbage
         {
             var random = new Random();
 
-            /*for (int i = 0; i < Total_Dice; i++)
+            for (int i = 0; i < Total_Dice; i++)
             {
                 if (!Game_Dice[i].Claimed)
                 {
                     Game_Dice[i].Value = random.Next(1, 6);
-                    //dice[i].Value = 1;
                     Game_Dice[i].Dice_Image = Image.FromFile("Images/" + Game_Dice[i].Value + "u.png");
                     picGameDice[i].Image = Game_Dice[i].Dice_Image;
                 }
@@ -1809,7 +1848,7 @@ namespace Garbage
                 dice[n].Value = 2;
                 dice[n].image = Image.FromFile("Images/" + dice[n].Value + "u.png");
                 picGameDice[n].Image = dice[n].image;
-            }*/
+            }
 
             Game_Dice[0].Value = 3;
             Game_Dice[1].Value = 3;
@@ -1828,7 +1867,7 @@ namespace Garbage
             Game_Dice[4].Dice_Image = Image.FromFile("Images/" + Game_Dice[4].Value + "u.png");
             picGameDice[4].Image = Game_Dice[4].Dice_Image;
             Game_Dice[5].Dice_Image = Image.FromFile("Images/" + Game_Dice[5].Value + "u.png");
-            picGameDice[5].Image = Game_Dice[5].Dice_Image;
+            picGameDice[5].Image = Game_Dice[5].Dice_Image;*/
 
             btnRoll.Enabled = false;
             btnClaim.Enabled = true;
@@ -1862,14 +1901,14 @@ namespace Garbage
             NewGame();
         }
 
+        private void Garbage_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckKeys(e);
+        }
+
         private void btnRoll_Click(object sender, EventArgs e)
         {
             RollDice();
-        }
-
-        private void btnEndTurn_Click(object sender, EventArgs e)
-        {
-            EndTurn();
         }
 
         private void btnClaim_Click(object sender, EventArgs e)
@@ -1877,9 +1916,9 @@ namespace Garbage
             ClaimDice();
         }
 
-        private void Garbage_KeyDown(object sender, KeyEventArgs e)
+        private void btnEndTurn_Click(object sender, EventArgs e)
         {
-            CheckKeys(e);
+            EndTurn();
         }
     }
 }
