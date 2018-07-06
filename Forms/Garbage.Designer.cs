@@ -34,6 +34,7 @@
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highscoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpCombinations = new System.Windows.Forms.GroupBox();
             this.lblName = new System.Windows.Forms.Label();
@@ -85,6 +86,7 @@
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.rulesToolStripMenuItem,
+            this.highscoresToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
@@ -93,21 +95,28 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // rulesToolStripMenuItem
             // 
             this.rulesToolStripMenuItem.Name = "rulesToolStripMenuItem";
-            this.rulesToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.rulesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rulesToolStripMenuItem.Text = "Rules";
             this.rulesToolStripMenuItem.Click += new System.EventHandler(this.rulesToolStripMenuItem_Click);
+            // 
+            // highscoresToolStripMenuItem
+            // 
+            this.highscoresToolStripMenuItem.Name = "highscoresToolStripMenuItem";
+            this.highscoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.highscoresToolStripMenuItem.Text = "Highscores";
+            this.highscoresToolStripMenuItem.Click += new System.EventHandler(this.highscoresToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // grpCombinations
@@ -307,6 +316,7 @@
         private System.Windows.Forms.Button btnEndTurn;
         private System.Windows.Forms.Button btnClaim;
         private System.Windows.Forms.Button btnRoll;
+        private System.Windows.Forms.ToolStripMenuItem highscoresToolStripMenuItem;
     }
 }
 

@@ -46,12 +46,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Dice.cs" />
+    <Compile Include="Classes\Highscore.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Forms\Garbage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Garbage.Designer.cs">
       <DependentUpon>Garbage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Highscores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Highscores.Designer.cs">
+      <DependentUpon>Highscores.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +70,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\Garbage.resx">
       <DependentUpon>Garbage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Highscores.resx">
+      <DependentUpon>Highscores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Rules.resx">
       <DependentUpon>Rules.cs</DependentUpon>

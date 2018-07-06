@@ -28,6 +28,7 @@ namespace Garbage
                 Game_Dice[i] = new Dice(i);
                 picGameDice[i].Image = Game_Dice[i].Dice_Image;
             }
+            Highscore.LoadHighschores();
         }
 
         private void CreateDice()
@@ -1091,28 +1092,37 @@ namespace Garbage
 
                 for (int o = 0; o < Total_Dice; o++)
                 {
-                    if (!Game_Dice[o].Claimed)
+                    if (Game_Dice[o].Id != firstIds[0] && Game_Dice[o].Id != firstIds[1] && Game_Dice[o].Id != firstIds[2])
                     {
-                        for (int p = 0; p < Total_Dice; p++)
+                        if (!Game_Dice[o].Claimed)
                         {
-                            if (Game_Dice[p].Id != Game_Dice[o].Id)
+                            for (int p = 0; p < Total_Dice; p++)
                             {
-                                if (!Game_Dice[p].Claimed)
+                                if (Game_Dice[p].Id != firstIds[0] && Game_Dice[p].Id != firstIds[1] && Game_Dice[p].Id != firstIds[2])
                                 {
-                                    for (int r = 0; r < Total_Dice; r++)
+                                    if (Game_Dice[p].Id != Game_Dice[o].Id)
                                     {
-                                        if (Game_Dice[r].Id != Game_Dice[o].Id && Game_Dice[r].Id != Game_Dice[p].Id)
+                                        if (!Game_Dice[p].Claimed)
                                         {
-                                            if (!Game_Dice[r].Claimed)
+                                            for (int r = 0; r < Total_Dice; r++)
                                             {
-                                                if (Game_Dice[o].Value == Game_Dice[p].Value && Game_Dice[o].Value == Game_Dice[r].Value)
+                                                if (Game_Dice[r].Id != firstIds[0] && Game_Dice[r].Id != firstIds[1] && Game_Dice[r].Id != firstIds[2])
                                                 {
-                                                    secondPair = true;
-                                                    secondIds[0] = o;
-                                                    secondIds[1] = p;
-                                                    secondIds[2] = r;
-                                                    done2 = true;
-                                                    break;
+                                                    if (Game_Dice[r].Id != Game_Dice[o].Id && Game_Dice[r].Id != Game_Dice[p].Id)
+                                                    {
+                                                        if (!Game_Dice[r].Claimed)
+                                                        {
+                                                            if (Game_Dice[o].Value == Game_Dice[p].Value && Game_Dice[o].Value == Game_Dice[r].Value)
+                                                            {
+                                                                secondPair = true;
+                                                                secondIds[0] = o;
+                                                                secondIds[1] = p;
+                                                                secondIds[2] = r;
+                                                                done2 = true;
+                                                                break;
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -1789,8 +1799,37 @@ namespace Garbage
             }
             else
             {
-                DialogResult result = MessageBox.Show("Game over! Your total score was: " + Game_Player.Total_Score + "! Play again?", "Game Over", MessageBoxButtons.YesNo);
-                
+                Game_Player.Total_Score += Game_Player.Current_Turn_Score;
+                Game_Player.Turn_Scores[Game_Player.Turn - 1] = Game_Player.Current_Turn_Score;
+                Game_Player.Current_Turn_Score = 0;
+                lblTotalScore.Text = "Total Score: " + Game_Player.Total_Score;
+                lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
+                lblProjectedScore.Text = "Projected Score: 0";
+                lblCurrentTurn.Text = "Current Turn: " + Game_Player.Turn;
+                lblScoreboard[Game_Player.Turn - 1].Text = Game_Player.Turn + ": " + Game_Player.Turn_Scores[Game_Player.Turn - 1];
+                Game_Player.Turn += 1;
+                Game_Player.Hot_Dice = false;
+                btnRoll.Enabled = false;
+                btnClaim.Enabled = false;
+                btnEndTurn.Enabled = false;
+
+                bool newhighscore = false;
+                for (int i = 0; i < 5; i++)
+                {
+                    if (Game_Player.Total_Score > Highscore.Score[i])
+                    {
+                        newhighscore = true;
+                        Highscore.Name[i] = Game_Player.Name;
+                        Highscore.Score[i] = Game_Player.Total_Score;
+                        Highscore.SaveHighscores();
+                        break;
+                    }
+                }
+
+                DialogResult result;
+                if (newhighscore) { result = MessageBox.Show("Game over! New highscore! Your total score was: " + Game_Player.Total_Score + "! Play again?", "Game Over", MessageBoxButtons.YesNo); }                
+                else { result = MessageBox.Show("Game over! Your total score was: " + Game_Player.Total_Score + "! Play again?", "Game Over", MessageBoxButtons.YesNo); }
+
                 if (result == DialogResult.Yes) { NewGame(); }
                 else { ExitGame(); }
             }
@@ -1843,19 +1882,12 @@ namespace Garbage
             }
 
             //For testing
-            /*for (int n = 2; n < Total_Dice; n++)
-            {
-                dice[n].Value = 2;
-                dice[n].image = Image.FromFile("Images/" + dice[n].Value + "u.png");
-                picGameDice[n].Image = dice[n].image;
-            }
-
-            Game_Dice[0].Value = 3;
+            /*Game_Dice[0].Value = 3;
             Game_Dice[1].Value = 3;
             Game_Dice[2].Value = 3;
-            Game_Dice[3].Value = 2;
-            Game_Dice[4].Value = 2;
-            Game_Dice[5].Value = 1;
+            Game_Dice[3].Value = 4;
+            Game_Dice[4].Value = 4;
+            Game_Dice[5].Value = 4;
             Game_Dice[0].Dice_Image = Image.FromFile("Images/" + Game_Dice[0].Value + "u.png");
             picGameDice[0].Image = Game_Dice[0].Dice_Image;
             Game_Dice[1].Dice_Image = Image.FromFile("Images/" + Game_Dice[1].Value + "u.png");
@@ -1878,11 +1910,25 @@ namespace Garbage
 
         private void CheckKeys(KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.R) { btnRoll.Enabled = true; }
+            if (e.KeyCode == Keys.R) { OpenRules(); }
 
             if (e.KeyCode == Keys.N) { NewGame(); }
 
+            if (e.KeyCode == Keys.H) { OpenHighScores(); }
+
             if (e.KeyCode == Keys.End) { ExitGame(); }
+        }
+
+        private void OpenRules()
+        {
+            Rules rules = new Rules();
+            rules.ShowDialog();
+        }
+
+        private void OpenHighScores()
+        {
+            Highscores highscores = new Highscores();
+            highscores.ShowDialog();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1892,8 +1938,7 @@ namespace Garbage
 
         private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Rules rules = new Rules();
-            rules.ShowDialog();
+            OpenRules();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1919,6 +1964,11 @@ namespace Garbage
         private void btnEndTurn_Click(object sender, EventArgs e)
         {
             EndTurn();
+        }
+
+        private void highscoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenHighScores();
         }
     }
 }
