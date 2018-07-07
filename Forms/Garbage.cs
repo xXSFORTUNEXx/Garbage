@@ -127,7 +127,7 @@ namespace Garbage
             string name = Interaction.InputBox("Please enter your name: ", "Enter Name", "John Doe");
             Game_Player = new Player(name);
             lblName.Text = "Name: " + name;
-            lblAdds.Text = "Adds: " + Game_Player.Adds;            
+            lblChances.Text = "Chances This Turn: " + Game_Player.Chances;           
             btnRoll.Enabled = true;
         }
 
@@ -1720,12 +1720,24 @@ namespace Garbage
 
                 lblProjectedScore.Text = "Projected Score: " + (Game_Player.Total_Score + Game_Player.Current_Turn_Score);
 
+                Game_Player.Taking_Chance = false;
                 btnRoll.Enabled = true;
                 btnClaim.Enabled = false;
                 btnEndTurn.Enabled = true;
+                btnAdd.Enabled = false;
             }
             else
             {
+                if (Game_Player.Taking_Chance)
+                {
+                    Game_Player.Current_Turn_Score = (-500 * Game_Player.Chances);
+                    MessageBox.Show("You have lost " + Game_Player.Current_Turn_Score + " points from failing on a chance!", "Chance Failed", MessageBoxButtons.OK);
+                    lblTurnScore.Text = "Turn Score: 0";
+                    lblProjectedScore.Text = "Projected Score: 0";
+                    EndTurn();
+                    return;
+                }
+
                 DialogResult answer = MessageBox.Show("You havent selected any combinations. Do you want to end your turn and claim 0? Press no to chance!", "Invalid Selection", MessageBoxButtons.YesNoCancel);
                 if (answer == DialogResult.Yes)
                 {
@@ -1737,6 +1749,11 @@ namespace Garbage
                 }
                 else if (answer == DialogResult.No)
                 {
+                    Game_Player.Taking_Chance = true;
+                    Game_Player.Chances += 1;
+                    lblChances.Text = "Chances This Turn: " + Game_Player.Chances;
+                    btnRoll.Enabled = true;
+                    btnClaim.Enabled = false;
                     return;
                 }
             }
@@ -1786,6 +1803,9 @@ namespace Garbage
                 Game_Player.Total_Score += Game_Player.Current_Turn_Score;
                 Game_Player.Turn_Scores[Game_Player.Turn - 1] = Game_Player.Current_Turn_Score;
                 Game_Player.Current_Turn_Score = 0;
+                Game_Player.Taking_Chance = false;
+                Game_Player.Chances = 0;
+                lblChances.Text = "Chances This Turn: " + Game_Player.Chances;
                 lblTotalScore.Text = "Total Score: " + Game_Player.Total_Score;
                 lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 lblProjectedScore.Text = "Projected Score: 0";
@@ -1793,6 +1813,7 @@ namespace Garbage
                 lblScoreboard[Game_Player.Turn - 1].Text = Game_Player.Turn + ": " + Game_Player.Turn_Scores[Game_Player.Turn - 1];
                 Game_Player.Turn += 1;
                 Game_Player.Hot_Dice = false;
+                Game_Player.Using_Add = false;
                 btnRoll.Enabled = true;
                 btnClaim.Enabled = false;
                 btnEndTurn.Enabled = false;
@@ -1802,6 +1823,9 @@ namespace Garbage
                 Game_Player.Total_Score += Game_Player.Current_Turn_Score;
                 Game_Player.Turn_Scores[Game_Player.Turn - 1] = Game_Player.Current_Turn_Score;
                 Game_Player.Current_Turn_Score = 0;
+                Game_Player.Taking_Chance = false;
+                Game_Player.Chances = 0;
+                lblChances.Text = "Chances This Turn: " + Game_Player.Chances;
                 lblTotalScore.Text = "Total Score: " + Game_Player.Total_Score;
                 lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 lblProjectedScore.Text = "Projected Score: 0";
@@ -1809,6 +1833,7 @@ namespace Garbage
                 lblScoreboard[Game_Player.Turn - 1].Text = Game_Player.Turn + ": " + Game_Player.Turn_Scores[Game_Player.Turn - 1];
                 Game_Player.Turn += 1;
                 Game_Player.Hot_Dice = false;
+                Game_Player.Using_Add = false;
                 btnRoll.Enabled = false;
                 btnClaim.Enabled = false;
                 btnEndTurn.Enabled = false;
@@ -1816,13 +1841,28 @@ namespace Garbage
                 bool newhighscore = false;
                 for (int i = 0; i < 5; i++)
                 {
-                    if (Game_Player.Total_Score > Highscore.Score[i])
+                    if (Highscore.Name[i] == "None" && Highscore.Score[i] == 0)
                     {
                         newhighscore = true;
                         Highscore.Name[i] = Game_Player.Name;
                         Highscore.Score[i] = Game_Player.Total_Score;
                         Highscore.SaveHighscores();
                         break;
+                    }
+                }
+
+                if (!newhighscore)
+                {
+                    for (int n = 0; n < 5; n++)
+                    {
+                        if (Game_Player.Total_Score > Highscore.Score[n])
+                        {
+                            newhighscore = true;
+                            Highscore.Name[n] = Game_Player.Name;
+                            Highscore.Score[n] = Game_Player.Total_Score;
+                            Highscore.SaveHighscores();
+                            break;
+                        }
                     }
                 }
 
@@ -1847,8 +1887,28 @@ namespace Garbage
                 }
             }
 
+            if (Game_Player.Using_Add)
+            {
+                if (!anything) { MessageBox.Show("You havent selected any combinations.", "Add", MessageBoxButtons.OK); return; }
+                lblTurnScore.Text = "Turn Score: 0";
+                lblProjectedScore.Text = "Projected Score: 0";
+                CheckCombinations();
+                EndTurn();
+                return;
+            }
+
             if (!anything)
             {
+                if (Game_Player.Taking_Chance)
+                {
+                    Game_Player.Current_Turn_Score = (-500 * Game_Player.Chances);
+                    MessageBox.Show("You have lost " + Game_Player.Current_Turn_Score + " points from failing on a chance!", "Chance Failed", MessageBoxButtons.OK);
+                    lblTurnScore.Text = "Turn Score: 0";
+                    lblProjectedScore.Text = "Projected Score: 0";
+                    EndTurn();
+                    return;
+                }
+
                 DialogResult answer = MessageBox.Show("You havent selected any combinations. Do you want to end your turn and claim 0? Press no to chance!", "Invalid Selection", MessageBoxButtons.YesNoCancel);
                 if (answer == DialogResult.Yes)
                 {
@@ -1860,6 +1920,11 @@ namespace Garbage
                 }
                 else if (answer == DialogResult.No)
                 {
+                    Game_Player.Taking_Chance = true;
+                    Game_Player.Chances += 1;
+                    lblChances.Text = "Chances This Turn: " + Game_Player.Chances;
+                    btnRoll.Enabled = true;
+                    btnClaim.Enabled = false;
                     return;
                 }
             }
@@ -1906,6 +1971,7 @@ namespace Garbage
             grpCombinations.Enabled = true;
             btnEndTurn.Enabled = false;
             lblHotDice.Visible = false;
+            btnAdd.Enabled = true;
         }
 
         private void CheckKeys(KeyEventArgs e)
@@ -1917,6 +1983,41 @@ namespace Garbage
             if (e.KeyCode == Keys.H) { OpenHighScores(); }
 
             if (e.KeyCode == Keys.End) { ExitGame(); }
+        }
+
+        private void InitAdd()
+        {
+            if (btnRoll.Enabled) { MessageBox.Show("You are currently able to roll! You can only select an add after rolling!", "Add", MessageBoxButtons.OK); return; }
+            if (Game_Player.Taking_Chance) { MessageBox.Show("You are currently taking a chance and cannot add during chances!", "Add", MessageBoxButtons.OK); return; }
+
+            bool arediceclaimed = false;
+            for (int i = 0; i < Total_Dice; i++)
+            {
+                if (Game_Dice[i].Claimed) { arediceclaimed = true; break; }
+            }
+
+            if (!arediceclaimed) { MessageBox.Show("No dice claimed!", "Add", MessageBoxButtons.OK); return; }
+
+            if (Game_Player.Adds > 0)
+            {
+                DialogResult answer = MessageBox.Show("Do you wish to use an add? If so select yes and choose a combination.", "Add", MessageBoxButtons.YesNo);
+
+                if (answer == DialogResult.Yes)
+                {
+                    Game_Player.Using_Add = true;
+                    Game_Player.Adds -= 1;
+                    btnRoll.Enabled = false;
+                    btnClaim.Enabled = true;
+                    btnEndTurn.Enabled = false;
+                    btnAdd.Enabled = false;
+                    ResetDice();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You have no adds remaining!", "Add", MessageBoxButtons.OK);
+                return;
+            }
         }
 
         private void OpenRules()
@@ -1969,6 +2070,19 @@ namespace Garbage
         private void highscoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenHighScores();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            InitAdd();
+        }
+
+        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (debugToolStripMenuItem.Checked)
+            {
+                btnAdd.Visible = true;
+            }
         }
     }
 }

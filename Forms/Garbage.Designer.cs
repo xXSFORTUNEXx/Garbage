@@ -41,15 +41,17 @@
             this.lblTotalScore = new System.Windows.Forms.Label();
             this.lblTurnScore = new System.Windows.Forms.Label();
             this.lblProjectedScore = new System.Windows.Forms.Label();
-            this.lblAdds = new System.Windows.Forms.Label();
+            this.lblChances = new System.Windows.Forms.Label();
             this.lblCurrentTurn = new System.Windows.Forms.Label();
             this.grpPlayerCard = new System.Windows.Forms.GroupBox();
             this.grpScoreboard = new System.Windows.Forms.GroupBox();
             this.grpOptions = new System.Windows.Forms.GroupBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.lblHotDice = new System.Windows.Forms.Label();
             this.btnEndTurn = new System.Windows.Forms.Button();
             this.btnClaim = new System.Windows.Forms.Button();
             this.btnRoll = new System.Windows.Forms.Button();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMain.SuspendLayout();
             this.grpPlayerCard.SuspendLayout();
             this.grpOptions.SuspendLayout();
@@ -77,7 +79,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -87,7 +89,8 @@
             this.newToolStripMenuItem,
             this.rulesToolStripMenuItem,
             this.highscoresToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.debugToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.gameToolStripMenuItem.Text = "Game";
@@ -165,14 +168,14 @@
             this.lblProjectedScore.TabIndex = 3;
             this.lblProjectedScore.Text = "Projected Score: 0";
             // 
-            // lblAdds
+            // lblChances
             // 
-            this.lblAdds.AutoSize = true;
-            this.lblAdds.Location = new System.Drawing.Point(19, 119);
-            this.lblAdds.Name = "lblAdds";
-            this.lblAdds.Size = new System.Drawing.Size(96, 13);
-            this.lblAdds.TabIndex = 4;
-            this.lblAdds.Text = "Remaining Adds: 0";
+            this.lblChances.AutoSize = true;
+            this.lblChances.Location = new System.Drawing.Point(19, 119);
+            this.lblChances.Name = "lblChances";
+            this.lblChances.Size = new System.Drawing.Size(109, 13);
+            this.lblChances.TabIndex = 4;
+            this.lblChances.Text = "Chances This Turn: 0";
             // 
             // lblCurrentTurn
             // 
@@ -186,7 +189,7 @@
             // grpPlayerCard
             // 
             this.grpPlayerCard.Controls.Add(this.lblCurrentTurn);
-            this.grpPlayerCard.Controls.Add(this.lblAdds);
+            this.grpPlayerCard.Controls.Add(this.lblChances);
             this.grpPlayerCard.Controls.Add(this.lblProjectedScore);
             this.grpPlayerCard.Controls.Add(this.lblTurnScore);
             this.grpPlayerCard.Controls.Add(this.lblTotalScore);
@@ -209,6 +212,7 @@
             // 
             // grpOptions
             // 
+            this.grpOptions.Controls.Add(this.btnAdd);
             this.grpOptions.Controls.Add(this.lblHotDice);
             this.grpOptions.Controls.Add(this.btnEndTurn);
             this.grpOptions.Controls.Add(this.btnClaim);
@@ -220,12 +224,23 @@
             this.grpOptions.TabStop = false;
             this.grpOptions.Text = "Options";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Enabled = false;
+            this.btnAdd.Location = new System.Drawing.Point(4, 81);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(111, 23);
+            this.btnAdd.TabIndex = 33;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // lblHotDice
             // 
             this.lblHotDice.AutoSize = true;
             this.lblHotDice.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHotDice.ForeColor = System.Drawing.Color.Red;
-            this.lblHotDice.Location = new System.Drawing.Point(14, 89);
+            this.lblHotDice.Location = new System.Drawing.Point(14, 103);
             this.lblHotDice.Name = "lblHotDice";
             this.lblHotDice.Size = new System.Drawing.Size(92, 29);
             this.lblHotDice.TabIndex = 32;
@@ -264,6 +279,14 @@
             this.btnRoll.Text = "Roll";
             this.btnRoll.UseVisualStyleBackColor = true;
             this.btnRoll.Click += new System.EventHandler(this.btnRoll_Click);
+            // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.CheckOnClick = true;
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.debugToolStripMenuItem.Text = "Debug";
+            this.debugToolStripMenuItem.Click += new System.EventHandler(this.debugToolStripMenuItem_Click);
             // 
             // Garbage
             // 
@@ -307,7 +330,7 @@
         private System.Windows.Forms.Label lblTotalScore;
         private System.Windows.Forms.Label lblTurnScore;
         private System.Windows.Forms.Label lblProjectedScore;
-        private System.Windows.Forms.Label lblAdds;
+        private System.Windows.Forms.Label lblChances;
         private System.Windows.Forms.Label lblCurrentTurn;
         private System.Windows.Forms.GroupBox grpPlayerCard;
         private System.Windows.Forms.GroupBox grpScoreboard;
@@ -317,6 +340,8 @@
         private System.Windows.Forms.Button btnClaim;
         private System.Windows.Forms.Button btnRoll;
         private System.Windows.Forms.ToolStripMenuItem highscoresToolStripMenuItem;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
     }
 }
 

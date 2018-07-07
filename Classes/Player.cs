@@ -17,6 +17,8 @@ namespace Garbage.Classes
         public int Turn;
         public bool Hot_Dice;
         public bool Can_Claim;
+        public bool Taking_Chance;
+        public bool Using_Add;
 
         public Player(string name)
         {
@@ -28,6 +30,8 @@ namespace Garbage.Classes
             Chances = 0;
             Hot_Dice = false;
             Can_Claim = false;
+            Taking_Chance = false;
+            Using_Add = false;
         }
     }
 }
