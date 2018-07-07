@@ -52,6 +52,7 @@
             this.btnClaim = new System.Windows.Forms.Button();
             this.btnRoll = new System.Windows.Forms.Button();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblAdds = new System.Windows.Forms.Label();
             this.mnuMain.SuspendLayout();
             this.grpPlayerCard.SuspendLayout();
             this.grpOptions.SuspendLayout();
@@ -135,7 +136,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(19, 27);
+            this.lblName.Location = new System.Drawing.Point(19, 22);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(67, 13);
             this.lblName.TabIndex = 0;
@@ -144,7 +145,7 @@
             // lblTotalScore
             // 
             this.lblTotalScore.AutoSize = true;
-            this.lblTotalScore.Location = new System.Drawing.Point(19, 50);
+            this.lblTotalScore.Location = new System.Drawing.Point(19, 42);
             this.lblTotalScore.Name = "lblTotalScore";
             this.lblTotalScore.Size = new System.Drawing.Size(74, 13);
             this.lblTotalScore.TabIndex = 1;
@@ -153,7 +154,7 @@
             // lblTurnScore
             // 
             this.lblTurnScore.AutoSize = true;
-            this.lblTurnScore.Location = new System.Drawing.Point(19, 73);
+            this.lblTurnScore.Location = new System.Drawing.Point(19, 63);
             this.lblTurnScore.Name = "lblTurnScore";
             this.lblTurnScore.Size = new System.Drawing.Size(72, 13);
             this.lblTurnScore.TabIndex = 2;
@@ -162,7 +163,7 @@
             // lblProjectedScore
             // 
             this.lblProjectedScore.AutoSize = true;
-            this.lblProjectedScore.Location = new System.Drawing.Point(19, 96);
+            this.lblProjectedScore.Location = new System.Drawing.Point(19, 84);
             this.lblProjectedScore.Name = "lblProjectedScore";
             this.lblProjectedScore.Size = new System.Drawing.Size(95, 13);
             this.lblProjectedScore.TabIndex = 3;
@@ -171,7 +172,7 @@
             // lblChances
             // 
             this.lblChances.AutoSize = true;
-            this.lblChances.Location = new System.Drawing.Point(19, 119);
+            this.lblChances.Location = new System.Drawing.Point(19, 105);
             this.lblChances.Name = "lblChances";
             this.lblChances.Size = new System.Drawing.Size(109, 13);
             this.lblChances.TabIndex = 4;
@@ -180,7 +181,7 @@
             // lblCurrentTurn
             // 
             this.lblCurrentTurn.AutoSize = true;
-            this.lblCurrentTurn.Location = new System.Drawing.Point(19, 142);
+            this.lblCurrentTurn.Location = new System.Drawing.Point(19, 127);
             this.lblCurrentTurn.Name = "lblCurrentTurn";
             this.lblCurrentTurn.Size = new System.Drawing.Size(78, 13);
             this.lblCurrentTurn.TabIndex = 5;
@@ -188,6 +189,7 @@
             // 
             // grpPlayerCard
             // 
+            this.grpPlayerCard.Controls.Add(this.lblAdds);
             this.grpPlayerCard.Controls.Add(this.lblCurrentTurn);
             this.grpPlayerCard.Controls.Add(this.lblChances);
             this.grpPlayerCard.Controls.Add(this.lblProjectedScore);
@@ -288,6 +290,15 @@
             this.debugToolStripMenuItem.Text = "Debug";
             this.debugToolStripMenuItem.Click += new System.EventHandler(this.debugToolStripMenuItem_Click);
             // 
+            // lblAdds
+            // 
+            this.lblAdds.AutoSize = true;
+            this.lblAdds.Location = new System.Drawing.Point(19, 146);
+            this.lblAdds.Name = "lblAdds";
+            this.lblAdds.Size = new System.Drawing.Size(43, 13);
+            this.lblAdds.TabIndex = 6;
+            this.lblAdds.Text = "Adds: 2";
+            // 
             // Garbage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +353,7 @@
         private System.Windows.Forms.ToolStripMenuItem highscoresToolStripMenuItem;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
+        private System.Windows.Forms.Label lblAdds;
     }
 }
 

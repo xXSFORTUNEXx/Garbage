@@ -11,6 +11,7 @@ namespace Garbage.Classes
         public string Name;
         public int Total_Score;
         public int Current_Turn_Score;
+        public int Current_Roll_Score;
         public int[] Turn_Scores = new int[10];
         public int Adds;
         public int Chances;

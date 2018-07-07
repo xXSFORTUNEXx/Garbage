@@ -169,6 +169,7 @@ namespace Garbage
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
                                                         Game_Player.Current_Turn_Score += 200;
+                                                        Game_Player.Current_Roll_Score += 200;
                                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
@@ -254,6 +255,7 @@ namespace Garbage
                     picGameDice[m].Image = Game_Dice[m].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 250;
+                    Game_Player.Current_Roll_Score += 250;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -292,6 +294,7 @@ namespace Garbage
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
                                                         Game_Player.Current_Turn_Score += 300;
+                                                        Game_Player.Current_Roll_Score += 300;
                                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
@@ -343,6 +346,7 @@ namespace Garbage
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
                                                         Game_Player.Current_Turn_Score += 400;
+                                                        Game_Player.Current_Roll_Score += 400;
                                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
@@ -394,6 +398,7 @@ namespace Garbage
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
                                                         Game_Player.Current_Turn_Score += 500;
+                                                        Game_Player.Current_Roll_Score += 500;
                                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
@@ -494,6 +499,7 @@ namespace Garbage
                     picGameDice[o].Image = Game_Dice[o].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 500;
+                    Game_Player.Current_Roll_Score += 500;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -588,6 +594,7 @@ namespace Garbage
 
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 500;
+                    Game_Player.Current_Roll_Score += 500;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -626,6 +633,7 @@ namespace Garbage
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
                                                         Game_Player.Current_Turn_Score += 600;
+                                                        Game_Player.Current_Roll_Score += 600;
                                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
@@ -677,6 +685,7 @@ namespace Garbage
                                                         picGameDice[m].Image = Game_Dice[m].Dice_Image;
                                                         Game_Player.Can_Claim = true;
                                                         Game_Player.Current_Turn_Score += 1000;
+                                                        Game_Player.Current_Roll_Score += 1000;
                                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                         done = true;
                                                         break;
@@ -735,6 +744,7 @@ namespace Garbage
                                                                 picGameDice[o].Image = Game_Dice[o].Dice_Image;
                                                                 Game_Player.Can_Claim = true;
                                                                 Game_Player.Current_Turn_Score += 1000;
+                                                                Game_Player.Current_Roll_Score += 1000;
                                                                 lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                                 done = true;
                                                                 break;
@@ -855,6 +865,7 @@ namespace Garbage
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 1000;
+                    Game_Player.Current_Roll_Score += 1000;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -969,6 +980,7 @@ namespace Garbage
                     picGameDice[p].Image = Game_Dice[p].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 1000;
+                    Game_Player.Current_Roll_Score += 1000;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -1023,6 +1035,7 @@ namespace Garbage
                                                                             picGameDice[p].Image = Game_Dice[p].Dice_Image;
                                                                             Game_Player.Can_Claim = true;
                                                                             Game_Player.Current_Turn_Score += 2000;
+                                                                            Game_Player.Current_Roll_Score += 2000;
                                                                             lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                                             done = true;
                                                                             break;
@@ -1162,6 +1175,7 @@ namespace Garbage
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 2000;
+                    Game_Player.Current_Roll_Score += 2000;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -1287,6 +1301,7 @@ namespace Garbage
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 2000;
+                    Game_Player.Current_Roll_Score += 2000;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -1422,6 +1437,7 @@ namespace Garbage
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 3000;
+                    Game_Player.Current_Roll_Score += 3000;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -1485,6 +1501,7 @@ namespace Garbage
                                                                                         picGameDice[r].Image = Game_Dice[r].Dice_Image;
                                                                                         Game_Player.Can_Claim = true;
                                                                                         Game_Player.Current_Turn_Score += 3000;
+                                                                                        Game_Player.Current_Roll_Score += 3000;
                                                                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                                                                         done = true;
                                                                                         break;
@@ -1627,6 +1644,7 @@ namespace Garbage
                     picGameDice[r].Image = Game_Dice[r].Dice_Image;
                     Game_Player.Can_Claim = true;
                     Game_Player.Current_Turn_Score += 3000;
+                    Game_Player.Current_Roll_Score += 3000;
                     lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                 }
             }
@@ -1654,6 +1672,7 @@ namespace Garbage
                                         picGameDice[n].Image = Game_Dice[n].Dice_Image;
                                         Game_Player.Can_Claim = true;
                                         Game_Player.Current_Turn_Score += 50;
+                                        Game_Player.Current_Roll_Score += 50;
                                         lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                                         done = true;
                                         break;
@@ -1679,6 +1698,7 @@ namespace Garbage
                             picGameDice[i].Image = Game_Dice[i].Dice_Image;
                             Game_Player.Can_Claim = true;
                             Game_Player.Current_Turn_Score += 100;
+                            Game_Player.Current_Roll_Score += 100;
                             lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                             break;
                         }
@@ -1699,6 +1719,7 @@ namespace Garbage
                             picGameDice[i].Image = Game_Dice[i].Dice_Image;
                             Game_Player.Can_Claim = true;
                             Game_Player.Current_Turn_Score += 50;
+                            Game_Player.Current_Roll_Score += 50;
                             lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
                             break;
                         }
@@ -1716,10 +1737,9 @@ namespace Garbage
                 }
 
                 bool checksaved = IsHotDice();
-                if (checksaved) { lblHotDice.Visible = true; Game_Player.Hot_Dice = true; ResetDice(); }
+                if (checksaved) { lblHotDice.Visible = true; Game_Player.Hot_Dice = true; Game_Player.Current_Roll_Score = 0; ResetDice(); }
 
                 lblProjectedScore.Text = "Projected Score: " + (Game_Player.Total_Score + Game_Player.Current_Turn_Score);
-
                 Game_Player.Taking_Chance = false;
                 btnRoll.Enabled = true;
                 btnClaim.Enabled = false;
@@ -1742,6 +1762,7 @@ namespace Garbage
                 if (answer == DialogResult.Yes)
                 {
                     Game_Player.Current_Turn_Score = 0;
+                    Game_Player.Current_Roll_Score = 0;
                     lblTurnScore.Text = "Turn Score: 0";
                     lblProjectedScore.Text = "Projected Score: 0";
                     EndTurn();
@@ -1803,6 +1824,7 @@ namespace Garbage
                 Game_Player.Total_Score += Game_Player.Current_Turn_Score;
                 Game_Player.Turn_Scores[Game_Player.Turn - 1] = Game_Player.Current_Turn_Score;
                 Game_Player.Current_Turn_Score = 0;
+                Game_Player.Current_Roll_Score = 0;
                 Game_Player.Taking_Chance = false;
                 Game_Player.Chances = 0;
                 lblChances.Text = "Chances This Turn: " + Game_Player.Chances;
@@ -1823,6 +1845,7 @@ namespace Garbage
                 Game_Player.Total_Score += Game_Player.Current_Turn_Score;
                 Game_Player.Turn_Scores[Game_Player.Turn - 1] = Game_Player.Current_Turn_Score;
                 Game_Player.Current_Turn_Score = 0;
+                Game_Player.Current_Roll_Score = 0;
                 Game_Player.Taking_Chance = false;
                 Game_Player.Chances = 0;
                 lblChances.Text = "Chances This Turn: " + Game_Player.Chances;
@@ -1913,6 +1936,7 @@ namespace Garbage
                 if (answer == DialogResult.Yes)
                 {
                     Game_Player.Current_Turn_Score = 0;
+                    Game_Player.Current_Roll_Score = 0;
                     lblTurnScore.Text = "Turn Score: 0";
                     lblProjectedScore.Text = "Projected Score: 0";
                     EndTurn();
@@ -2010,6 +2034,11 @@ namespace Garbage
                     btnClaim.Enabled = true;
                     btnEndTurn.Enabled = false;
                     btnAdd.Enabled = false;
+                    Game_Player.Current_Turn_Score -= Game_Player.Current_Roll_Score;
+                    Game_Player.Current_Roll_Score = 0;
+                    lblProjectedScore.Text = "Projected Score: " + (Game_Player.Total_Score + Game_Player.Current_Turn_Score);
+                    lblTurnScore.Text = "Turn Score: " + Game_Player.Current_Turn_Score;
+                    lblAdds.Text = "Adds: " + Game_Player.Adds;
                     ResetDice();
                 }
             }
